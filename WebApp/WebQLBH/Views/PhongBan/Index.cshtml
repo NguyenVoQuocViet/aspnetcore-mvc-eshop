@@ -1,0 +1,35 @@
+@model IEnumerable<WebQLBH.Models.PhongBan>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Phòng ban</h1>
+
+<p>
+    <a asp-action="Create">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenPB)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.TenPB)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-mapb="@item.MaPB">Sửa</a> |
+                <a asp-action="Details" asp-route-mapb="@item.MaPB">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-mapb="@item.MaPB">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

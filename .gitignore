@@ -1,0 +1,33 @@
+## Build and Binary outputs
+[Bb]in/
+[Oo]bj/
+[Ll]og/
+[Ll]ogs/
+
+## Visual Studio files
+.vs/
+*.user
+*.aps
+*.nto
+*.dbmdl
+*.pfx
+*.publishsettings
+
+## SQL Server Database files
+*.mdf
+*.ldf
+
+## OS generated files
+thumbs.db
+[Th]umbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+.DS_Store
+
+appsettings.Development.json
+
+## Other files
+*.docx
+*.pptx
+*.doc

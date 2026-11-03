@@ -1,0 +1,80 @@
+@model IEnumerable<WebQLBH.Models.SanPham>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Sản phẩm</h1>
+
+<p>
+    <a asp-action="Create">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonGia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AnhSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MoTaTT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ThongTinCT)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.LoaiSanPham.TenLSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonViTinh.TenDVT)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.TenSP)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.DonGia)
+            </td>
+            <td>
+                @if (!string.IsNullOrWhiteSpace(item.AnhSP))
+                {
+                    <img src="~/images/sanpham/@item.AnhSP" alt="Ảnh sản phẩm" style="max-width:100px; height:auto;" />
+                }
+                else
+                {
+                    <span>Không có ảnh</span>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MoTaTT)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.ThongTinCT)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.LoaiSanPham.TenLSP)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.DonViTinh.TenDVT)
+            </td>
+            <td>
+                <div class="d-flex justify-content-center gap-2" style="white-space: nowrap;">
+                    <a asp-action="Edit" asp-route-masp="@item.MaSP">Sửa</a>
+                    <a asp-action="Details" asp-route-masp="@item.MaSP">Chi tiết</a>
+                    <a asp-action="Delete" asp-route-masp="@item.MaSP">Xóa</a>
+                </div>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

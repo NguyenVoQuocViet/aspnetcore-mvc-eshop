@@ -1,0 +1,44 @@
+@model IEnumerable<WebQLBH.Models.NhomSanPham>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Lỗi:</strong> @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenNSP)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.TenNSP)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-mansp="@item.MaNSP">Edit</a> |
+                <a asp-action="Details" asp-route-mansp="@item.MaNSP">Details</a> |
+                <a asp-action="Delete" asp-route-mansp="@item.MaNSP">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

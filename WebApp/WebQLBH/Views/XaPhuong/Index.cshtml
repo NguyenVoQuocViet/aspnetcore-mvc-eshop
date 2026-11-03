@@ -1,0 +1,53 @@
+@model IEnumerable<WebQLBH.Models.XaPhuong>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Xã phường</h1>
+
+<p>
+    <a asp-action="Create">Thêm mới</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.MaXP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenXP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaTinh)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tinh.TenTinh)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.MaXP)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.TenXP)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MaTinh)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.Tinh.TenTinh)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-maxp="@item.MaXP">Sửa</a> |
+                <a asp-action="Details" asp-route-maxp="@item.MaXP">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-maxp="@item.MaXP">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

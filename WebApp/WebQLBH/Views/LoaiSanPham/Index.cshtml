@@ -1,0 +1,62 @@
+@model IEnumerable<WebQLBH.Models.LoaiSanPham>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Loại sản phẩm</h1>
+
+<p>
+    <a asp-action="Create">Thêm loại sản phẩm mới</a>
+</p>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Lỗi:</strong> @TempData["ErrorMessage"]
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+			<th>
+                @Html.DisplayNameFor(model => model.MaLSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TenLSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.MaNSP)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NhomSanPham.TenNSP)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.MaLSP)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.TenLSP)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.MaNSP)
+            </td>
+            <td>
+                @Html.DisplayFor(model => item.NhomSanPham.TenNSP)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-malsp="@item.MaLSP">Sửa</a> |
+                <a asp-action="Details" asp-route-malsp="@item.MaLSP">Chi tiết</a> |
+                <a asp-action="Delete" asp-route-malsp="@item.MaLSP">Xóa</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

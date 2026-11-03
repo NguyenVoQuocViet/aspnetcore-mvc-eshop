@@ -1,0 +1,44 @@
+@model IEnumerable<WebQLBH.Models.DonViTinh>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Đơn vị tính</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+@if (TempData["ErrorMessage"] != null)
+{
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+		<strong>Lỗi:</strong> @TempData["ErrorMessage"]
+		<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+}
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.TenDVT)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(model => item.TenDVT)
+            </td>
+            <td>
+                <a asp-action="Edit" asp-route-madvt="@item.MaDVT">Edit</a> |
+                <a asp-action="Details" asp-route-MaDVT="@item.MaDVT">Details</a> |
+                <a asp-action="Delete" asp-route-madvt="@item.MaDVT">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

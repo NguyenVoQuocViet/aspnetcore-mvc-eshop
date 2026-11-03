@@ -1,0 +1,35 @@
+﻿@{
+    ViewData["Title"] = "Đăng nhập";
+}
+
+<div class="row justify-content-center mt-5">
+    <div class="col-md-4">
+        <div class="card shadow-sm">
+            <div class="card-header bg-primary text-white text-center">
+                <h4 class="mb-0">ĐĂNG NHẬP HỆ THỐNG</h4>
+            </div>
+            <div class="card-body">
+                <!-- Hiển thị lỗi từ ModelState khi đăng nhập sai -->
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+                <form asp-action="Login" asp-route-returnUrl="@ViewData["ReturnUrl"]" method="post">
+                    @Html.AntiForgeryToken()
+
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Tên đăng nhập</label>
+                        <input name="TenDN" class="form-control" placeholder="Nhập tên đăng nhập..." required autocomplete="off" />
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label font-weight-bold">Mật khẩu</label>
+                        <input name="MatKhau" type="password" class="form-control" placeholder="Nhập mật khẩu..." required />
+                    </div>
+
+                    <div class="d-grid gap-2 mt-4">
+                        <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
